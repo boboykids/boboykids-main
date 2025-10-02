@@ -74,11 +74,21 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
       <div className="relative overflow-hidden">
-        <img
-          src={product.image_url}
-          alt={product.name}
-          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-        />
+        <div className="relative aspect-square w-full  mx-auto overflow-hidden">
+
+          <img
+            src={product.image_url}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover blur-md scale-110"
+            aria-hidden="true"
+          />
+          <img
+            src={product.image_url}
+            alt={product.name}
+            className="relative w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+
         <div className="absolute top-4 right-4 flex flex-col gap-2 items-end">
           {product.promo_price && discountPercentage > 0 && (
             <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xl font-bold">
